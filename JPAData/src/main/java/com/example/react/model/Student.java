@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity // This whole class is a entity
-@Table//(name="students") // which table this class needs to be stored in
+@Table(name="students") // which table this class needs to be stored in
 public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

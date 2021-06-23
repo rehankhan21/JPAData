@@ -1,4 +1,4 @@
-package com.example.react.model;
+package com.example.jpa.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -52,7 +52,8 @@ public class Student {
 		this.grade = grade;
 	}
 	
-	public void displayStudents() {
-		
+	@Override
+	public String toString() {
+		return "Student [id =" + this.id + " name =  " + this.name + " grade = " + this.grade + " ]"; 
 	}
 }

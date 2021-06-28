@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,6 +64,16 @@ public class StudentController {
 		//return ResponseEntity.ok(s);
 			return studentRepo.findByName(name);
 		
+	}
+	
+	@PutMapping("/student/{id}")
+	public ResponseEntity<Student> updateStudent(@PathVariable int id, @RequestBody Student student){
+		
+		Student s = studentRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student not found"));
+		s.setName(student.getName());
+		s.setGrade(student.getGrade());
+		Student updatedStudent = studentRepo.save(s);
+		return ResponseEntity.ok(updatedStudent);
 	}
 	
 	@DeleteMapping("/student/{id}")
